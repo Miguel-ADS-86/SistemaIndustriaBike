@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.Dao_Funcionario;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -188,53 +189,54 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void jBentrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBentrarMouseEntered
         //evento quando passar o mouse encima
-        jBentrar.setBackground(new Color(235,235,235));
-        jBentrar.setForeground(new Color(58,65,84));
+        jBentrar.setBackground(new Color(235, 235, 235));
+        jBentrar.setForeground(new Color(58, 65, 84));
     }//GEN-LAST:event_jBentrarMouseEntered
 
     private void jBsairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBsairMouseEntered
         // evento quando passar o mouse encima
-        jBsair.setBackground(new Color(235,235,235));
-        jBsair.setForeground(new Color(217,81,51));
+        jBsair.setBackground(new Color(235, 235, 235));
+        jBsair.setForeground(new Color(217, 81, 51));
     }//GEN-LAST:event_jBsairMouseEntered
 
     private void jBentrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBentrarMouseExited
         // evento quando passar o mouse encima
-        jBentrar.setBackground(new Color(58,65,84));
+        jBentrar.setBackground(new Color(58, 65, 84));
         jBentrar.setForeground(Color.WHITE);
     }//GEN-LAST:event_jBentrarMouseExited
 
     private void jBsairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBsairMouseExited
         // TODO add your handling code here:
-        jBsair.setBackground(new Color(217,81,51));
+        jBsair.setBackground(new Color(217, 81, 51));
         jBsair.setForeground(Color.WHITE);
     }//GEN-LAST:event_jBsairMouseExited
 
     private void jTloginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTloginFocusGained
-       
+
     }//GEN-LAST:event_jTloginFocusGained
 
     private void jTloginFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTloginFocusLost
-      
+
     }//GEN-LAST:event_jTloginFocusLost
 
     private void jBentrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBentrarActionPerformed
         // metodo para fazer login
-        if(!jTlogin.getText().equalsIgnoreCase("")&& !jPsenha.getText().equalsIgnoreCase("")){
-         if(jTlogin.getText().equalsIgnoreCase("admin")&& jPsenha.getText().equalsIgnoreCase("admin")){
-           TelaPrincipal obj = new TelaPrincipal();
-           obj.setVisible(true);//deixa a tela visivel
-           this.dispose();//fecha a tela atual
-        }else{
-             JOptionPane.showMessageDialog(null, "Login ou Senha invalida");
-             jTlogin.setText("");
-             jPsenha.setText("");
-         }
-        }else{
-            JOptionPane.showMessageDialog(null, "Adicione o Login & Senha");
+        String login = jTlogin.getText();
+        String senha = jPsenha.getText();
+
+        if (!login.equals("") && !senha.equals("")) {
+            Dao_Funcionario f = new Dao_Funcionario();
+            f.verificarLogin(login, senha);
             jTlogin.setText("");
             jPsenha.setText("");
-        }
+            this.dispose();// fecha a tela atual
+        }else{
+           JOptionPane.showMessageDialog(null, "Não pode fazer login, campos em branco!");
+           jTlogin.setText("");
+           jPsenha.setText("");
+         }
+
+
     }//GEN-LAST:event_jBentrarActionPerformed
 
     /**
@@ -281,7 +283,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPsenha;
-    private javax.swing.JTextField jTlogin;
+    public javax.swing.JPasswordField jPsenha;
+    public javax.swing.JTextField jTlogin;
     // End of variables declaration//GEN-END:variables
 }

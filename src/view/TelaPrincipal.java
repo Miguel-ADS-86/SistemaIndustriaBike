@@ -1,8 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
+
+import controller.Dao_Departamento;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import model.Departamento;
 
 /**
  *
@@ -10,11 +11,9 @@ package view;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaPrincipal
-     */
+   
     public TelaPrincipal() {
-        initComponents();
+        initComponents();        
     }
 
     /**
@@ -28,9 +27,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jdpPainel = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuDepartamento = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
@@ -49,20 +50,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jdpPainelLayout.setVerticalGroup(
             jdpPainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
+            .addGap(0, 329, Short.MAX_VALUE)
         );
 
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pasta.png"))); // NOI18N
         jMenu1.setText("Cadastro");
 
-        jMenuItem2.setText("Funcionário");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuDepartamento.setText("Departamento");
+        jMenuDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuDepartamentoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(jMenuDepartamento);
 
-        jMenuItem3.setText("Departamento");
+        jMenuItem3.setText("Funcionário");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
@@ -89,12 +100,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(730, 404));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    //chamando da tela de cadastro de departamento
+    private void jMenuDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDepartamentoActionPerformed
+        //adiciona o jiframe dentro do painel, não maximizado
+        /*try {
+            CadastroDepartamento obj = new CadastroDepartamento();
+            jdpPainel.add(obj);
+            obj.setVisible(true);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }*/
+        //mostra a tela maximizada
+        try {
+        CadastroDepartamento mostrarInicio = new CadastroDepartamento();
+        jdpPainel.add(mostrarInicio);
+         mostrarInicio.show();
+         mostrarInicio.setMaximum(true);
+       } catch (Exception ex) {
+           ex.printStackTrace();
+     }
+    }//GEN-LAST:event_jMenuDepartamentoActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        CadatroFuncionario obj = new CadatroFuncionario();
-        jdpPainel.add(obj);
-        obj.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // Chamando a tela funcionario
+        try{
+        CadastroFuncionario f = new CadastroFuncionario();
+        jdpPainel.add(f);
+        f.show();
+        f.setMaximum(true);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,10 +170,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuDepartamento;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JDesktopPane jdpPainel;
     // End of variables declaration//GEN-END:variables

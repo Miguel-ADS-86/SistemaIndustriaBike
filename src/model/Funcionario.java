@@ -1,15 +1,16 @@
 
 package model;
 
+import java.util.ArrayList;
+
 public class Funcionario {
     private int codigo;
-    private int codigo_departamento;
+    private Departamento codigo_departamento;
     private String nome;
     private String telefone;
     private String login;
     private String senha;
-
- 
+  
     public int getCodigo() {
         return codigo;
     }
@@ -59,14 +60,15 @@ public class Funcionario {
         this.senha = senha;
     }
     
-    public int getCodigo_Departamento() {
+    public Departamento getCodigo_Departamento() {
         return codigo_departamento;
     }
 
   
-    public void setCodigo_Departamento(int codigo_departamento) {
+    public void setCodigo_Departamento(Departamento codigo_departamento) {
         this.codigo_departamento = codigo_departamento;
     }
+    
     
     
 }
